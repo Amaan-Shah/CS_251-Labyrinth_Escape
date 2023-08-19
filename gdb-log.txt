@@ -1,0 +1,101 @@
+// Amaan Shah, UIC, Spring 2021
+// gdb-log.txt
+//
+// File to show path taken in the maze using gdb.
+
+****************Regular Maze***************
+
+(gdb) b 16
+Breakpoint 1 at 0x1c8e: file ExploreTheRegularLabyrinth.cpp, line 19.
+(gdb) r
+Starting program: /home/amaan/cs_251_data_structures_spring_2021/project_4__labyrinth_escape/ExploreTheRegularLabyrinth.exe 
+
+Breakpoint 1, main () at ExploreTheRegularLabyrinth.cpp:19
+19      if (isPathToFreedom(start, kPathOutOfRegularMaze)) {
+(gdb) i locals
+m = {_vptr.Maze = 0x555555763c00 <vtable for Maze+16>, grid = {
+    _vptr.Grid = 0x555555763c20 <vtable for Grid<MazeCell*>+16>, Rows = 0x555555776f10, NumRows = 4}, 
+  numRows = 4, numCols = 4, kNumTwistyRooms = 12}
+start = 0x555555777130
+(gdb) p *start
+$1 = {whatsHere = "", north = 0x0, south = 0x555555777270, east = 0x0, west = 0x0}
+(gdb) p *(start->south)
+$2 = {whatsHere = "", north = 0x555555777130, south = 0x5555557773b0, east = 0x5555557772c0, west = 0x0}
+(gdb) p *(start->south->east)
+$3 = {whatsHere = "", north = 0x555555777180, south = 0x0, east = 0x0, west = 0x555555777270}
+(gdb) p *(start->south->east->north)
+$4 = {whatsHere = "", north = 0x0, south = 0x5555557772c0, east = 0x5555557771d0, west = 0x0}
+(gdb) p *(start->south->east->north->east)
+$5 = {whatsHere = "Spellbook", north = 0x0, south = 0x0, east = 0x555555777220, west = 0x555555777180}
+(gdb) p *(start->south->east->north->east->east
+A syntax error in expression, near `'.
+(gdb) p *(start->south->east->north->east->east)
+$6 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x0, west = 0x5555557771d0}
+(gdb) p *(start->south->south)
+$7 = {whatsHere = "", north = 0x555555777270, south = 0x0, east = 0x555555777400, west = 0x0}
+(gdb) p *(start->south->south->east)
+$8 = {whatsHere = "", north = 0x0, south = 0x555555777540, east = 0x555555777450, west = 0x5555557773b0}
+(gdb) p *(start->south->south->east->east)
+$9 = {whatsHere = "", north = 0x555555777310, south = 0x0, east = 0x0, west = 0x555555777400}
+(gdb) p *(start->south->south->east->east->north)
+$10 = {whatsHere = "Potion", north = 0x0, south = 0x555555777450, east = 0x555555777360, west = 0x0}
+(gdb) p *(start->south->south->east->east->north->east)
+$11 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x0, west = 0x555555777310}
+(gdb) p *(start->south->south->east->south)
+$12 = {whatsHere = "", north = 0x555555777400, south = 0x0, east = 0x555555777590, west = 0x5555557774f0}
+(gdb) p *(start->south->south->east->south->west)
+$13 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x555555777540, west = 0x0}
+(gdb) p *(start->south->south->east->south->east)
+$14 = {whatsHere = "", north = 0x0, south = 0x0, east = 0x5555557775e0, west = 0x555555777540}
+(gdb) p *(start->south->south->east->south->east->east)
+$15 = {whatsHere = "", north = 0x5555557774a0, south = 0x0, east = 0x0, west = 0x555555777590}
+(gdb) p *(start->south->south->east->south->east->east->north)
+$16 = {whatsHere = "Wand", north = 0x0, south = 0x5555557775e0, east = 0x0, west = 0x0}
+(gdb) Quit
+(gdb) 
+
+
+***********Twisty Maze*********************
+
+Reading symbols from ExploreTheTwistyLabyrinth.exe...done.
+(gdb) b 18
+Breakpoint 1 at 0x1c09: file ExploreTheTwistyLabyrinth.cpp, line 20.
+(gdb) r
+Starting program: /home/amaan/cs_251_data_structures_spring_2021/project_4__labyrinth_escape/ExploreTheTwistyLabyrinth.exe 
+
+Breakpoint 1, main () at ExploreTheTwistyLabyrinth.cpp:20
+20      if (isPathToFreedom(start, kPathOutOfTwistyMaze)) {
+(gdb) i locals
+m = {_vptr.Maze = 0x555555764bf8 <vtable for Maze+16>, grid = {
+    _vptr.Grid = 0x555555764c18 <vtable for Grid<MazeCell*>+16>, Rows = 0x555555777ee0, NumRows = 4}, 
+  numRows = 4, numCols = 4, kNumTwistyRooms = 12}
+start = 0x555555777ff0
+(gdb) p *start
+$1 = {whatsHere = "", north = 0x555555778870, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p *(start->north)
+$2 = {whatsHere = "", north = 0x555555778820, south = 0x555555777ff0, east = 0x0, west = 0x0}
+(gdb) p *(start->north->north)
+$3 = {whatsHere = "", north = 0x555555778870, south = 0x5555557787d0, east = 0x555555778780, west = 0x0}
+(gdb) p *(start->north->north->east)
+$4 = {whatsHere = "", north = 0x0, south = 0x555555778820, east = 0x0, west = 0x5555557787d0}
+(gdb) p *(start->north->north->south)
+$5 = {whatsHere = "", north = 0x5555557789f0, south = 0x0, east = 0x555555778780, west = 0x555555778820}
+(gdb) p *(start->north->north->south->north)
+$6 = {whatsHere = "", north = 0x0, south = 0x5555557789a0, east = 0x5555557787d0, west = 0x0}
+(gdb) p *(start->north->north->south->north->south)
+$7 = {whatsHere = "", north = 0x555555778730, south = 0x0, east = 0x5555557789f0, west = 0x555555778690}
+(gdb) p *(start->north->north->south->north->south->west)
+$8 = {whatsHere = "Potion", north = 0x0, south = 0x0, east = 0x555555778730, west = 0x5555557789a0}
+(gdb) p *(start->north->north->south->north->south->west->east)
+$9 = {whatsHere = "", north = 0x5555557788c0, south = 0x5555557789a0, east = 0x0, west = 0x555555778690}
+(gdb) p *(start->north->north->south->north->south->west->east->north)
+$10 = {whatsHere = "", north = 0x555555778730, south = 0x5555557786e0, east = 0x0, west = 0x555555778620}
+(gdb) p *(start->north->north->south->north->south->west->east->north->south)
+$11 = {whatsHere = "Wand", north = 0x5555557788c0, south = 0x0, east = 0x0, west = 0x0}
+(gdb) p *(start->north->north->south->north->south->west->east->north->south->north)
+$12 = {whatsHere = "", north = 0x555555778730, south = 0x5555557786e0, east = 0x0, west = 0x555555778620}
+(gdb) p *(start->north->north->south->north->south->west->east->north->south->north->west)
+$13 = {whatsHere = "Spellbook", north = 0x5555557788c0, south = 0x0, east = 0x0, west = 0x0}
+(gdb) q
+
+
